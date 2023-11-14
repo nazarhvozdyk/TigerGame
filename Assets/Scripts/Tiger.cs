@@ -25,7 +25,6 @@ public class Tiger : MonoBehaviour
     private void Move(int direction, bool isHorizontal)
     {
         direction = Mathf.Clamp(direction, -1, 1);
-        Debug.Log(direction + " " + isHorizontal);
         return;
 
         // if (isHorizontal)
