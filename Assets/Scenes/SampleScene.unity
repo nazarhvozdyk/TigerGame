@@ -318,7 +318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca77e501f7701a84fbb46ae440208357, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animator: {fileID: 0}
+  _animator: {fileID: 1338526511}
 --- !u!1 &162366805
 GameObject:
   m_ObjectHideFlags: 0
@@ -2538,7 +2538,7 @@ MonoBehaviour:
   _arrowPrefab: {fileID: 917111510552255278, guid: 7aef4ac6cef0cf24795d2fe0d4599024, type: 3}
   _arrowsImagesData: {fileID: 11400000, guid: 2e0de79f4df212943a8931ceec18ffb9, type: 2}
   _arrowsParent: {fileID: 253930365}
-  _arrowsAmount: 3
+  _startArrowsAmount: 3
 --- !u!1 &1209907699
 GameObject:
   m_ObjectHideFlags: 0
@@ -2933,6 +2933,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9108159823113271703, guid: cf7f1989a74b86c4d8527d5676d887eb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108159823113271703, guid: cf7f1989a74b86c4d8527d5676d887eb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2940,6 +2948,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3203850278583735174, guid: cf7f1989a74b86c4d8527d5676d887eb, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1338526510}
+    - targetCorrespondingSourceObject: {fileID: 3203850278583735174, guid: cf7f1989a74b86c4d8527d5676d887eb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1338526511}
   m_SourcePrefab: {fileID: 100100000, guid: cf7f1989a74b86c4d8527d5676d887eb, type: 3}
 --- !u!4 &1338526474 stripped
 Transform:
@@ -3106,11 +3117,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6651265722819970336, guid: cf7f1989a74b86c4d8527d5676d887eb, type: 3}
   m_PrefabInstance: {fileID: 1338526473}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1338526507 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 9108159823113271703, guid: cf7f1989a74b86c4d8527d5676d887eb, type: 3}
-  m_PrefabInstance: {fileID: 1338526473}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1338526508 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 227124091557572874, guid: cf7f1989a74b86c4d8527d5676d887eb, type: 3}
@@ -3141,7 +3147,6 @@ MonoBehaviour:
   boneColor: {r: 0, g: 0, b: 1, a: 0.5}
   m_Transforms:
   - {fileID: 1338526508}
-  - {fileID: 1338526507}
   - {fileID: 1338526506}
   - {fileID: 1338526485}
   - {fileID: 1338526484}
@@ -3174,6 +3179,27 @@ MonoBehaviour:
   - {fileID: 1338526504}
   - {fileID: 1338526503}
   - {fileID: 1338526502}
+--- !u!95 &1338526511
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1338526509}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6bfa8e49fc9e2e849ad16354469c654e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1348642380
 GameObject:
   m_ObjectHideFlags: 0

@@ -25,21 +25,20 @@ public class Tiger : MonoBehaviour
     private void Move(int direction, bool isHorizontal)
     {
         direction = Mathf.Clamp(direction, -1, 1);
-        return;
 
-        // if (isHorizontal)
-        // {
-        //     if (direction < 0)
-        //         _animator.SetTrigger("rollToTheLeft");
-        //     else
-        //         _animator.SetTrigger("rollToTheRight");
-        // }
-        // else
-        // {
-        //     if (direction < 0)
-        //         _animator.SetTrigger("layDown");
-        //     else
-        //         _animator.SetTrigger("riseOnBackLegs");
-        // }
+        if (isHorizontal)
+        {
+            if (direction == 1)
+                _animator.SetTrigger("rollToTheLeft");
+            else
+                _animator.SetTrigger("rollToTheRight");
+        }
+        else
+        {
+            if (direction == 1)
+                _animator.SetTrigger("riseOnBackLegs");
+            else
+                _animator.SetTrigger("layDown");
+        }
     }
 }

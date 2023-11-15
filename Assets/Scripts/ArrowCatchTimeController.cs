@@ -23,11 +23,13 @@ public class ArrowCatchTimeController : MonoBehaviour
     {
         _frameTransform.position = arrowRequest.transform.position;
         StartCoroutine(CatchTime(time, callBack));
+        InputController.Instance.SetActive(true);
     }
 
     public void RemoveCurrentCatchTime()
     {
         _frameTransform.gameObject.SetActive(false);
+        InputController.Instance.SetActive(false);
         StopAllCoroutines();
     }
 

@@ -14,10 +14,17 @@ public class InputController : MonoBehaviour
     private void Awake()
     {
         _instance = this;
+        enabled = false;
+    }
+
+    public void SetActive(bool value)
+    {
+        enabled = value;
     }
 
     public void OnArrowButtonClick(ArrowCode code)
     {
-        onInput?.Invoke(code);
+        if (enabled)
+            onInput?.Invoke(code);
     }
 }
