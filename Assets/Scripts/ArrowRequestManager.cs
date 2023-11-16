@@ -20,7 +20,7 @@ public class ArrowRequestManager : MonoBehaviour
     private void Start()
     {
         InputController.Instance.onInput += OnInput;
-        LevelManagament.Instance.onLevelComplited += OnLevelComplited;
+        LevelManagament.Instance.onLevelLost += OnLevelComplited;
         CreateDelay(1);
     }
 

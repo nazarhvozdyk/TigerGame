@@ -16,7 +16,7 @@ public class ArrowInputHelper : MonoBehaviour
 
     private void Start()
     {
-        LevelManagament.Instance.onLevelComplited += OnlevelComplited;
+        LevelManagament.Instance.onLevelLost += OnlevelComplited;
     }
 
     private void OnlevelComplited()

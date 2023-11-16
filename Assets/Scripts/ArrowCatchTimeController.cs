@@ -14,7 +14,7 @@ public class ArrowCatchTimeController : MonoBehaviour
     private void Start()
     {
         _frameTransform.gameObject.SetActive(false);
-        LevelManagament.Instance.onLevelComplited += OnLevelComplited;
+        LevelManagament.Instance.onLevelLost += OnLevelComplited;
     }
 
     private void OnLevelComplited()

@@ -11,12 +11,11 @@ public class LevelManagament
         }
     }
     private static LevelManagament _instance;
-
-    public delegate void LevelComplitedHandler();
-    public event LevelComplitedHandler onLevelComplited;
+    public delegate void LevelLostHandler();
+    public event LevelLostHandler onLevelLost;
 
     public void Lose()
     {
-        onLevelComplited?.Invoke();
+        onLevelLost?.Invoke();
     }
 }
