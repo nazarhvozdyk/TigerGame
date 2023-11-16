@@ -20,7 +20,14 @@ public class ArrowRequestManager : MonoBehaviour
     private void Start()
     {
         InputController.Instance.onInput += OnInput;
+        LevelManagament.Instance.onLevelComplited += OnLevelComplited;
         CreateDelay(1);
+    }
+
+    private void OnLevelComplited()
+    {
+        enabled = false;
+        CancelInvoke();
     }
 
     // create delay before starting to create catch time
@@ -81,7 +88,7 @@ public class ArrowRequestManager : MonoBehaviour
 
     private void OnPlayerCaughtRequest()
     {
-        Debug.Log("add score");
+        ScoreManager.Instance.AddScore(1);
         ArrowsRequestCreator.Instance.DeleteArrow(_currentArrowRequest.arrowCode);
         _arrowCatchTimeController.RemoveCurrentCatchTime();
     }
@@ -97,6 +104,6 @@ public class ArrowRequestManager : MonoBehaviour
         CreateDelay(2);
         ArrowsRequestCreator.Instance.DeleteArrow(_currentArrowRequest.arrowCode);
         _arrowCatchTimeController.RemoveCurrentCatchTime();
-        Debug.Log("lose score");
+        LifesSystem.Instance.TakeHealth();
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -12,6 +13,14 @@ public class ArrowCatchTimeController : MonoBehaviour
 
     private void Start()
     {
+        _frameTransform.gameObject.SetActive(false);
+        LevelManagament.Instance.onLevelComplited += OnLevelComplited;
+    }
+
+    private void OnLevelComplited()
+    {
+        StopAllCoroutines();
+        enabled = false;
         _frameTransform.gameObject.SetActive(false);
     }
 

@@ -14,6 +14,16 @@ public class ArrowInputHelper : MonoBehaviour
         _button.onClick.AddListener(OnButtonDown);
     }
 
+    private void Start()
+    {
+        LevelManagament.Instance.onLevelComplited += OnlevelComplited;
+    }
+
+    private void OnlevelComplited()
+    {
+        _button.onClick.RemoveListener(OnButtonDown);
+    }
+
     private void OnButtonDown()
     {
         InputController.Instance.OnArrowButtonClick(_arrowCode);
