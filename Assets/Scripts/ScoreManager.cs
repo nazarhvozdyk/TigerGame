@@ -9,12 +9,13 @@ public class ScoreManager : MonoBehaviour
     }
     private static ScoreManager _instance;
 
-    [SerializeField]
-    private TextMeshProUGUI _scoreText;
     private int _currentScore;
 
-    private void Awake() 
-    { 
+    [SerializeField]
+    private NumberRenderer _numberRenderer;
+
+    private void Awake()
+    {
         _instance = this;
     }
 
@@ -25,7 +26,7 @@ public class ScoreManager : MonoBehaviour
 
     private void UpdateScore()
     {
-        _scoreText.text = _currentScore + "";
+        _numberRenderer.RenderNumber(_currentScore);
     }
 
     public void AddScore(int amount)

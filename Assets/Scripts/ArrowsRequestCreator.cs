@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ArrowsRequestCreator : MonoBehaviour
 {
@@ -46,13 +47,28 @@ public class ArrowsRequestCreator : MonoBehaviour
 
         int arrowCodeNumer = UnityEngine.Random.Range(0, arrowCodeOptionsAmount);
         ArrowCode arrowCode = (ArrowCode)arrowCodeNumer;
-        Sprite sprite = _arrowsImagesData.GetArowSprite(arrowCode);
+        Sprite sprite = _arrowsImagesData.GetRightArrowSprite();
 
         ArrowRequest arrowRequest = Instantiate(_arrowPrefab, _arrowsParent);
         arrowRequest.SetUp(sprite, arrowCode);
         _currentArrowsAmount++;
 
+        SetImageRotation(arrowCode, arrowRequest.transform);
+
         _arrowRequests.Add(arrowRequest);
+    }
+
+    private void SetImageRotation(ArrowCode arrowCode, Transform imageTransform)
+    {
+        float zRotation = 0;
+        if (arrowCode == ArrowCode.Left)
+            zRotation = 180;
+        else if (arrowCode == ArrowCode.Up)
+            zRotation = 90;
+        else if (arrowCode == ArrowCode.Down)
+            zRotation = -90;
+
+        imageTransform.eulerAngles = new Vector3(0, 0, zRotation);
     }
 
     public void DeleteArrow(ArrowCode code)

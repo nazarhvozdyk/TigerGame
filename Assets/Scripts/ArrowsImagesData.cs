@@ -6,6 +6,9 @@ public class ArrowsImagesData : ScriptableObject
     [SerializeField]
     private ArrowInfo[] _info;
 
+    [SerializeField]
+    private Sprite _rightArrowSprite;
+
     public Sprite GetArowSprite(ArrowCode code)
     {
         foreach (var item in _info)
@@ -15,5 +18,10 @@ public class ArrowsImagesData : ScriptableObject
         }
 
         return null;
+    }
+
+    public Sprite GetRightArrowSprite()
+    {
+        return _rightArrowSprite;
     }
 }

@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ArrowRequestManager : MonoBehaviour
 {
@@ -17,10 +19,21 @@ public class ArrowRequestManager : MonoBehaviour
     private ArrowRequest _currentArrowRequest;
     private float _timer;
 
+    [SerializeField]
+    private GameObject _catchEffectPrefab;
+
+    [SerializeField]
+    private RectTransform _effectParent;
+
+    [SerializeField]
+    private Image _damageImage;
+
     private void Start()
     {
         InputController.Instance.onInput += OnInput;
         LevelManagament.Instance.onLevelLost += OnLevelComplited;
+        _damageImage.enabled = false;
+
         CreateDelay(1);
     }
 
@@ -88,9 +101,25 @@ public class ArrowRequestManager : MonoBehaviour
 
     private void OnPlayerCaughtRequest()
     {
+        CreateCatchEffect();
         ScoreManager.Instance.AddScore(1);
         ArrowsRequestCreator.Instance.DeleteArrow(_currentArrowRequest.arrowCode);
         _arrowCatchTimeController.RemoveCurrentCatchTime();
+    }
+
+    private void CreateCatchEffect()
+    {
+        GameObject effect = Instantiate(_catchEffectPrefab, _effectParent);
+
+        Vector2 pos;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            _effectParent,
+            _currentArrowRequest.transform.position,
+            Camera.main,
+            out pos
+        );
+        RectTransform effectRectTransform = (RectTransform)effect.transform;
+        effectRectTransform.anchoredPosition = pos;
     }
 
     private void OnArrowTimeEnded()
@@ -101,9 +130,27 @@ public class ArrowRequestManager : MonoBehaviour
 
     private void OnPlayerLosesCatch()
     {
+        StartCoroutine(LifeTakenEffect());
         CreateDelay(2);
         ArrowsRequestCreator.Instance.DeleteArrow(_currentArrowRequest.arrowCode);
         _arrowCatchTimeController.RemoveCurrentCatchTime();
         LifesSystem.Instance.TakeHealth();
+    }
+
+    private IEnumerator LifeTakenEffect()
+    {
+        _damageImage.enabled = true;
+
+        Color color = _damageImage.color;
+        float lifeTime = 1f;
+        for (float t = 0; t < lifeTime; t += Time.deltaTime)
+        {
+            float process = t / lifeTime;
+            color.a = Mathf.Sin(Mathf.PI * process);
+            _damageImage.color = color;
+            yield return null;
+        }
+
+        _damageImage.enabled = false;
     }
 }
