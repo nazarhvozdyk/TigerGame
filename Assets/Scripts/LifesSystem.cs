@@ -9,10 +9,6 @@ public class LifesSystem : MonoBehaviour
     private static LifesSystem _instance;
 
     [SerializeField]
-    private int _startHealth = 3;
-    private int _currentHealth;
-
-    [SerializeField]
     private HeartsController _heartsController;
 
     private void Awake()
@@ -22,18 +18,16 @@ public class LifesSystem : MonoBehaviour
 
     private void Start()
     {
-        _currentHealth = _startHealth;
-
-        for (int i = 0; i < _startHealth; i++)
+        for (int i = 0; i < LifesData.Amount; i++)
             _heartsController.CreateIcon();
     }
 
     public void TakeHealth()
     {
-        _currentHealth--;
+        LifesData.Take(1);
         _heartsController.MakeHeartEmpty();
 
-        if (_currentHealth == 0)
+        if (LifesData.Amount == 0)
             LevelManagament.Instance.Lose();
     }
 }

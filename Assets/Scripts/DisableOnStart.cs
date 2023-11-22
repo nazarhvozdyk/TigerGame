@@ -2,11 +2,5 @@ using UnityEngine;
 
 public class DisableOnStart : MonoBehaviour
 {
-    [SerializeField]
-    private Behaviour _behaviour;
-
-    private void Start()
-    {
-        _behaviour.enabled = false;
-    }
+    private void Start() => gameObject.SetActive(false);
 }
