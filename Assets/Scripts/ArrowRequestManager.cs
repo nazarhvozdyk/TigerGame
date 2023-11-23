@@ -160,4 +160,10 @@ public class ArrowRequestManager : MonoBehaviour
 
         _damageImage.enabled = false;
     }
+
+    private void OnDestroy()
+    {
+        InputController.Instance.onInput -= OnInput;
+        LevelManagament.Instance.onPauseStateChanged -= OnLevelComplited;
+    }
 }

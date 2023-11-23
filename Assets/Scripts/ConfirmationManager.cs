@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Video;
 
 public class ConfirmationManager : MonoBehaviour
 {
@@ -8,6 +7,9 @@ public class ConfirmationManager : MonoBehaviour
         get => _instance;
     }
     private static ConfirmationManager _instance;
+
+    [SerializeField]
+    private ConfirmationWindow _purchaseConfirmationWindowPrefab;
 
     [SerializeField]
     private ConfirmationWindow _confirmationWindowPrefab;
@@ -27,7 +29,7 @@ public class ConfirmationManager : MonoBehaviour
         string text = $"Would you like to purchase {itemName} for {price}?";
 
         ConfirmationWindow confirmationWindow = Instantiate(
-            _confirmationWindowPrefab,
+            _purchaseConfirmationWindowPrefab,
             _canvas.transform
         );
 

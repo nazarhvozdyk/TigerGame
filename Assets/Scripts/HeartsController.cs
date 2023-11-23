@@ -30,8 +30,11 @@ public class HeartsController : MonoBehaviour
 
     public void SetHeartOnline()
     {
+        Debug.Log(_heartIcons.Count - 1);
+
         for (int i = _heartIcons.Count - 1; i >= 0; i--)
         {
+            Debug.Log("here");
             if (_heartIcons[i].isEmpty)
             {
                 _heartIcons[i].SetHeartActive();

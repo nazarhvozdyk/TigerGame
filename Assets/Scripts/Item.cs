@@ -26,6 +26,7 @@ public class Item : MonoBehaviour
         _button.onClick.AddListener(OnButtonDown);
         _item = itemData;
         _iconImage.sprite = _item.sprite;
+        _nameText.text = _item.itemName;
         _amountText.text = itemData.amount.ToString();
     }
 

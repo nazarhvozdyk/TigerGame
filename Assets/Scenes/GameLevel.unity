@@ -6249,6 +6249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 968fd91a0fd295f4db2b0aa432d65397, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _purchaseConfirmationWindowPrefab: {fileID: 2693610536670623646, guid: cedd25857eee6ee4a892ac48f5e093b9, type: 3}
   _confirmationWindowPrefab: {fileID: 2693610536670623646, guid: 2a91f46d59ca96a4080849e1dd4f7ae7, type: 3}
   _canvas: {fileID: 471922582}
 --- !u!1 &2008348694

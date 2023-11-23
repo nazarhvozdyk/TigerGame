@@ -47,4 +47,9 @@ public class UIManager : MonoBehaviour
         else
             LevelManagament.Instance.SetPause(false);
     }
+
+    private void OnDestroy()
+    {
+        LevelManagament.Instance.onLevelStateChanged -= OnLevelStateChanged;
+    }
 }

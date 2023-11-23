@@ -68,4 +68,9 @@ public class ArrowCatchTimeController : MonoBehaviour
         _frameTransform.gameObject.SetActive(false);
         callBack();
     }
+
+    private void OnDestroy()
+    {
+        LevelManagament.Instance.onPauseStateChanged -= OnLevelComplited;
+    }
 }

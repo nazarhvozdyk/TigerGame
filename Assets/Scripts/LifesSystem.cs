@@ -20,8 +20,16 @@ public class LifesSystem : MonoBehaviour
     {
         LifesData.onAmountChanged += OnLifesValueChanged;
 
-        for (int i = 0; i < LifesData.Amount; i++)
+        for (int i = 0; i < LifesData.MaxLifeAmount; i++)
             _heartsController.CreateIcon();
+
+        if (LifesData.Amount != LifesData.MaxLifeAmount)
+        {
+            int missedAmount = LifesData.MaxLifeAmount - LifesData.Amount;
+
+            for (int i = 0; i < missedAmount; i++)
+                _heartsController.MakeHeartEmpty();
+        }
     }
 
     public void TakeHealth()

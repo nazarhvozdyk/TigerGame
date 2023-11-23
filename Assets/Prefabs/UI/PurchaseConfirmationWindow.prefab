@@ -455,7 +455,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Confirm action
+  m_text: Confirm purchase
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 06173b9c5509f2941b89abb78fcba0cb, type: 2}
   m_sharedMaterial: {fileID: 1689333335336495714, guid: 06173b9c5509f2941b89abb78fcba0cb, type: 2}
@@ -535,7 +535,7 @@ GameObject:
   - component: {fileID: 8626026155949250698}
   - component: {fileID: 2693610536670623646}
   m_Layer: 5
-  m_Name: ConfirmationWindow
+  m_Name: PurchaseConfirmationWindow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -647,7 +647,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Are you sure u want to do that?
+  m_text: Would you like to purchase something for something?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 06173b9c5509f2941b89abb78fcba0cb, type: 2}
   m_sharedMaterial: {fileID: 1689333335336495714, guid: 06173b9c5509f2941b89abb78fcba0cb, type: 2}

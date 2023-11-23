@@ -1,6 +1,6 @@
 public static class Money
 {
-    private static int _value = 100;
+    private static int _value = 200;
     public static int Value
     {
         get => _value;
