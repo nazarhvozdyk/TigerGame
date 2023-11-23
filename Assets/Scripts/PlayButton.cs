@@ -13,6 +13,12 @@ public class PlayButton : MonoBehaviour
 
     private void OnButtonDown()
     {
+        if (LifesData.Amount == 0)
+        {
+            string text = "You have no lifes to play!";
+            UIMessage.Instance.CreateMessage(text);
+            return;
+        }
         SceneController.LoadGameLevel();
     }
 }

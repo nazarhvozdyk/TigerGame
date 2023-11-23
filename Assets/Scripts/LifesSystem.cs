@@ -18,6 +18,8 @@ public class LifesSystem : MonoBehaviour
 
     private void Start()
     {
+        LifesData.onAmountChanged += OnLifesValueChanged;
+
         for (int i = 0; i < LifesData.Amount; i++)
             _heartsController.CreateIcon();
     }
@@ -25,9 +27,18 @@ public class LifesSystem : MonoBehaviour
     public void TakeHealth()
     {
         LifesData.Take(1);
-        _heartsController.MakeHeartEmpty();
+    }
 
-        if (LifesData.Amount == 0)
-            LevelManagament.Instance.Lose();
+    private void OnLifesValueChanged(int currentAmount, int previousValue)
+    {
+        if (currentAmount > previousValue)
+            _heartsController.SetHeartOnline();
+        else
+            _heartsController.MakeHeartEmpty();
+    }
+
+    private void OnDestroy()
+    {
+        LifesData.onAmountChanged -= OnLifesValueChanged;
     }
 }

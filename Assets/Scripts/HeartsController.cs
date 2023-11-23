@@ -27,4 +27,16 @@ public class HeartsController : MonoBehaviour
             }
         }
     }
+
+    public void SetHeartOnline()
+    {
+        for (int i = _heartIcons.Count - 1; i >= 0; i--)
+        {
+            if (_heartIcons[i].isEmpty)
+            {
+                _heartIcons[i].SetHeartActive();
+                return;
+            }
+        }
+    }
 }

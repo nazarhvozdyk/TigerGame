@@ -16,12 +16,15 @@ public class ArrowInputHelper : MonoBehaviour
 
     private void Start()
     {
-        LevelManagament.Instance.onLevelLost += OnlevelComplited;
+        LevelManagament.Instance.onPauseStateChanged += OnlevelComplited;
     }
 
-    private void OnlevelComplited()
+    private void OnlevelComplited(bool isPaused)
     {
-        _button.onClick.RemoveListener(OnButtonDown);
+        if (isPaused)
+            _button.onClick.RemoveListener(OnButtonDown);
+        else
+            _button.onClick.AddListener(OnButtonDown);
     }
 
     private void OnButtonDown()

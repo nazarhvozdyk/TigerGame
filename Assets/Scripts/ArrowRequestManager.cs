@@ -31,16 +31,23 @@ public class ArrowRequestManager : MonoBehaviour
     private void Start()
     {
         InputController.Instance.onInput += OnInput;
-        LevelManagament.Instance.onLevelLost += OnLevelComplited;
+        LevelManagament.Instance.onPauseStateChanged += OnLevelComplited;
         _damageImage.enabled = false;
 
         CreateDelay(1);
     }
 
-    private void OnLevelComplited()
+    private void OnLevelComplited(bool isPaused)
     {
-        enabled = false;
-        CancelInvoke();
+        if (isPaused)
+        {
+            enabled = false;
+            CancelInvoke();
+        }
+        else
+        {
+            CreateDelay(2);
+        }
     }
 
     // create delay before starting to create catch time

@@ -16,6 +16,7 @@ public class OfferCreator : MonoBehaviour
     private void CreateOffers()
     {
         MarketPlaceOfferData[] data = MarketPlace.Instance.GetOffersData();
+
         foreach (var item in data)
         {
             Offer newOffer = Instantiate(_offerPrefab, _offersParent);

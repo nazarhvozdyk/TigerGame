@@ -30,7 +30,7 @@ public static class SceneController
         // return;
     }
 
-    private static void LoadMainMenu()
+    public static void LoadMainMenu()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
         SceneManager.LoadScene(_loadingSceneName);

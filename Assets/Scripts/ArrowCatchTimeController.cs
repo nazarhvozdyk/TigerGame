@@ -14,14 +14,21 @@ public class ArrowCatchTimeController : MonoBehaviour
     private void Start()
     {
         _frameTransform.gameObject.SetActive(false);
-        LevelManagament.Instance.onLevelLost += OnLevelComplited;
+        LevelManagament.Instance.onPauseStateChanged += OnLevelComplited;
     }
 
-    private void OnLevelComplited()
+    private void OnLevelComplited(bool isPaused)
     {
-        StopAllCoroutines();
-        enabled = false;
-        _frameTransform.gameObject.SetActive(false);
+        if (isPaused)
+        {
+            StopAllCoroutines();
+            enabled = false;
+            _frameTransform.gameObject.SetActive(false);
+        }
+        else
+        {
+            enabled = true;
+        }
     }
 
     public void CreateCatchTime(

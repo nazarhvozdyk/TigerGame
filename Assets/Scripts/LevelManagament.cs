@@ -1,21 +1,57 @@
-public class LevelManagament
+using UnityEngine;
+using UnityEngine.UIElements;
+
+public class LevelManagament : MonoBehaviour
 {
+    public enum LevelState
+    {
+        Lost,
+        Continued
+    }
+
     public static LevelManagament Instance
     {
-        get
-        {
-            if (_instance == null)
-                _instance = new LevelManagament();
-
-            return _instance;
-        }
+        get => _instance;
     }
     private static LevelManagament _instance;
-    public delegate void LevelLostHandler();
-    public event LevelLostHandler onLevelLost;
+    public delegate void PauseStateHandler(bool isPaused);
+    public delegate void LevelStateHandler(LevelState levelState);
+    public event PauseStateHandler onPauseStateChanged;
+    public event LevelStateHandler onLevelStateChanged;
 
-    public void Lose()
+    private void Awake()
     {
-        onLevelLost?.Invoke();
+        _instance = this;
+    }
+
+    private void Start()
+    {
+        LifesData.onAmountChanged += OnLifesValueChanged;
+    }
+
+    private void OnLifesValueChanged(int currentAmount, int previousValue)
+    {
+        if (currentAmount == 0)
+            Lose();
+    }
+
+    private void Lose()
+    {
+        onLevelStateChanged?.Invoke(LevelState.Lost);
+        onPauseStateChanged?.Invoke(true);
+    }
+
+    public void SetPause(bool value)
+    {
+        onPauseStateChanged?.Invoke(value);
+    }
+
+    public void ContinueLevel()
+    {
+        if (LifesData.Amount == 0)
+            return;
+
+        onLevelStateChanged?.Invoke(LevelState.Continued);
+        onPauseStateChanged?.Invoke(false);
     }
 }

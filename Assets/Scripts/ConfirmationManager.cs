@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Video;
 
 public class ConfirmationManager : MonoBehaviour
 {
@@ -16,9 +17,38 @@ public class ConfirmationManager : MonoBehaviour
 
     public delegate void InputHandler(bool isConfirmed);
 
+    private void Awake()
+    {
+        _instance = this;
+    }
+
     public void CreatePurchasedConfirmation(InputHandler handler, int price, string itemName)
     {
         string text = $"Would you like to purchase {itemName} for {price}?";
+
+        ConfirmationWindow confirmationWindow = Instantiate(
+            _confirmationWindowPrefab,
+            _canvas.transform
+        );
+
+        confirmationWindow.SetUp(handler, text);
+    }
+
+    public void CreateItemUseCinfirmation(InputHandler handler, string itemName)
+    {
+        string text = $"You sure you want to use {itemName}?";
+
+        ConfirmationWindow confirmationWindow = Instantiate(
+            _confirmationWindowPrefab,
+            _canvas.transform
+        );
+
+        confirmationWindow.SetUp(handler, text);
+    }
+
+    public void CreateGoToMainMenuConfirmation(InputHandler handler)
+    {
+        string text = "Are you sure u want to go to main menu?";
 
         ConfirmationWindow confirmationWindow = Instantiate(
             _confirmationWindowPrefab,

@@ -1,4 +1,4 @@
-using TMPro;
+using System;
 using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
@@ -22,6 +22,13 @@ public class ScoreManager : MonoBehaviour
     private void Start()
     {
         UpdateScore();
+        LevelManagament.Instance.onLevelStateChanged += OnLevelStateChanged;
+    }
+
+    private void OnLevelStateChanged(LevelManagament.LevelState levelState)
+    {
+        if (levelState == LevelManagament.LevelState.Lost)
+            Money.AddValue(_currentScore / 2);
     }
 
     private void UpdateScore()
@@ -33,5 +40,10 @@ public class ScoreManager : MonoBehaviour
     {
         _currentScore += amount;
         UpdateScore();
+    }
+
+    private void OnDestroy()
+    {
+        LevelManagament.Instance.onLevelStateChanged -= OnLevelStateChanged;
     }
 }

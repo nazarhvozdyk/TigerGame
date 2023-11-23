@@ -26,7 +26,15 @@ public class ConfirmationWindow : MonoBehaviour
         _text.text = text;
     }
 
-    private void OnDenyButtonClick() => _callback(false);
+    private void OnDenyButtonClick()
+    {
+        _callback(false);
+        Destroy(gameObject);
+    }
 
-    private void OnConfirmationButtonClick() => _callback(true);
+    private void OnConfirmationButtonClick()
+    {
+        _callback(true);
+        Destroy(gameObject);
+    }
 }

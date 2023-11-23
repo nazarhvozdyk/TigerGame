@@ -20,4 +20,9 @@ public class MoneyDisplayer : MonoBehaviour
     {
         _numberRenderer.RenderNumber(number);
     }
+
+    private void OnDestroy()
+    {
+        Money.onValueChaged -= OnMoneyValueChanged;
+    }
 }

@@ -15,11 +15,7 @@ public class NumberRenderer : MonoBehaviour
     public void RenderNumber(int aNum)
     {
         if (aNum < 0)
-        {
-            Debug.LogError("Can not submit negative numbers! yet!");
-            Debug.Break();
             return;
-        }
 
         int length = aNum.ToString().Length;
         char[] strNum = aNum.ToString().ToCharArray();
@@ -44,7 +40,7 @@ public class NumberRenderer : MonoBehaviour
             int howManToDelete = 0;
             for (int i = length; i < _numbers.Count; i++)
             {
-                DestroyImmediate(_numbers[i].gameObject);
+                Destroy(_numbers[i].gameObject);
                 howManToDelete++;
             }
 

@@ -1,6 +1,6 @@
 public static class Money
 {
-    private static int _value;
+    private static int _value = 100;
     public static int Value
     {
         get => _value;
@@ -12,5 +12,11 @@ public static class Money
     {
         _value += value;
         onValueChaged?.Invoke(_value - value, _value);
+    }
+
+    public static void TakeValue(int value)
+    {
+        _value -= value;
+        onValueChaged?.Invoke(_value + value, _value);
     }
 }

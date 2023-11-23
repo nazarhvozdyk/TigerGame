@@ -12,4 +12,10 @@ public class HeartIcon : MonoBehaviour
         _redHeartImage.enabled = false;
         isEmpty = true;
     }
+
+    public void SetHeartActive()
+    {
+        _redHeartImage.enabled = false;
+        isEmpty = false;
+    }
 }
